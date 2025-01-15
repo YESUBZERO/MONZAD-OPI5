@@ -19,8 +19,8 @@ def load_model(model_path = None):
     return rknn
 
 def detect_objects(rknn, frame):
-    input_frame_ori = cv2.resize(frame, (640, 640))  # Ajustar tamaño según tu modelo
-    input_frame = np.expand_dims(input_frame_ori, axis=0)
+    frame = cv2.resize(frame, (640, 640))  # Ajustar tamaño según tu modelo
+    input_frame = np.expand_dims(frame, axis=0)
     outputs = rknn.inference(inputs=[input_frame])
 
-    return outputs
+    return outputs, frame
